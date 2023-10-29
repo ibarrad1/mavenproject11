@@ -12,8 +12,19 @@ public class GestorInteraccion {
         entrada = new Scanner(System.in);
     }
 
-    public void mostrarMensaje(String mensaje) {
+ public void mostrarMensaje(String mensaje) {
         System.out.println(mensaje);
     }
-}
 
+    public void mostrarMensajePositivo() {
+        String[] mensajesPositivos = {
+            "¡Muy bien!",
+            "¡Excelente!",
+            "¡Buen trabajo!",
+            "¡Sigue así!"
+        };
+
+        int indiceAleatorio = random.nextInt(mensajesPositivos.length);
+        System.out.println(mensajesPositivos[indiceAleatorio]);
+    }
+}
