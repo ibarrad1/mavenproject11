@@ -23,9 +23,10 @@ public class ProgramaAritmetico {
         gestorInteraccion.mostrarMensaje("5: Aleatorio");
         int tipoProblema = entrada.nextInt();
 
-      OperacionesMatematicas operacionesMatematicas = new OperacionesMatematicas(nivelDificultad, tipoProblema);
+       OperacionesMatematicas operacionesMatematicas = new OperacionesMatematicas(nivelDificultad, tipoProblema);
 
         int aciertos = 0;
+        int errores = 0;
         int intentos = 0;
         int totalPreguntas = 10;
 
@@ -45,6 +46,7 @@ public class ProgramaAritmetico {
                     gestorInteraccion.mostrarMensajePositivo();
                     esRespuestaCorrecta = true;
                 } else {
+                    errores++; // Incrementar el contador de errores
                     gestorInteraccion.mostrarMensajeNegativo();
                 }
             }
@@ -52,8 +54,14 @@ public class ProgramaAritmetico {
             intentos++;
         }
 
-        // Calculando el porcentaje de respuestas correctas
+       
         double porcentajeCorrecto = ((double) aciertos / totalPreguntas) * 100;
+        double porcentajeIncorrecto = ((double) errores / totalPreguntas) * 100; 
+        
+
+        // Mostrando estadísticas
+        gestorInteraccion.mostrarMensaje("Respuestas correctas: " + aciertos + " (" + porcentajeCorrecto + "%)");
+        gestorInteraccion.mostrarMensaje("Respuestas incorrectas: " + errores + " (" + porcentajeIncorrecto + "%)");
         
         if (porcentajeCorrecto < 75) {
             gestorInteraccion.mostrarMensaje("Por favor pide ayuda adicional a tu instructor.");
